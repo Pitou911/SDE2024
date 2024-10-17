@@ -20,25 +20,25 @@ CareNest is a React-based web application that uses AI to predict possible disea
 
 ### Prerequisites
 
-- Node.js (v14 or higher)
+- Node.js (v13 or higher)
 - npm or yarn
 
 ### Installation
 
 1. Clone the repository:
-    ```bash
-    git clone https://github.com/your-username/carenest.git
-    ```
+   ```bash
+   git clone https://github.com/your-username/carenest.git
+   ```
 2. Navigate to the project directory:
-    ```bash
-    cd carenest
-    ```
+   ```bash
+   cd carenest
+   ```
 3. Install dependencies:
-    ```bash
-    npm install
-    # or
-    yarn install
-    ```
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
 ### Running the Application
 
@@ -48,3 +48,4 @@ To start the application in development mode:
 npm start
 # or
 yarn start
+```
