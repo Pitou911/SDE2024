@@ -1,0 +1,46 @@
+.landing__page {
+  height: calc(100vh - 100px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.landing__page--description {
+  flex: 70%;
+}
+.landing__page--logo {
+  flex: 30%;
+}
+.landing__page--description--slogan p {
+  font-size: 20px;
+}
+
+.landing__page--description--btns {
+  display: flex;
+  justify-content: start;
+  margin-top: 20px;
+  gap: 20px;
+}
+.landing__page--description--btns button {
+  padding: 10px 50px;
+  border: none;
+}
+
+.landing__page--description--btn--login button {
+  background-color: #162634;
+  color: #f2f7fa;
+  font-size: 20px;
+  border-radius: 15px;
+}
+.landing__page--description--btn--login button:hover {
+  background-color: #060a0e;
+}
+
+.landing__page--description--btn--register button {
+  background-color: #f2f7fa;
+  color: #162634;
+  font-size: 20px;
+  border-radius: 15px;
+}
+.landing__page--description--btn--register button:hover {
+  background-color: #ffff;
+}
