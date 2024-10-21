@@ -1,5 +1,5 @@
 import React from "react";
-import Predictor from "./components/Predictor";
+import Predictor from "./components/PredictComp";
 import "./App.css";
 import {
   BrowserRouter as Router,
@@ -11,7 +11,7 @@ import Nav from "./components/Nav";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Cases from "./pages/Cases";
-
+import PredictComp from "./components/PredictComp";
 const App = () => {
   return (
     <Router>
@@ -21,6 +21,7 @@ const App = () => {
         <Route path='/' element={<Home />} />
         <Route path='/cases' element={<Cases />} />
         <Route path='/about' element={<About />} />
+        <Route path='/predict' element={<PredictComp/>}/>
       </Routes>
     </Router>
   );

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Select from "react-select"; // Import react-select
 
-const Predictor = () => {
+const PredictComp = () => {
   const [symptomsList, setSymptomsList] = useState([]);
   const [selectedSymptoms, setSelectedSymptoms] = useState([]);
   const [prediction, setPrediction] = useState(null);
@@ -97,4 +97,4 @@ const Predictor = () => {
   );
 };
 
-export default Predictor;
+export default PredictComp;
