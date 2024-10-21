@@ -9,19 +9,19 @@ app = Flask(__name__)
 CORS(app)
 
 # Load the trained Logistic Regression model
-model = joblib.load('./../training_model/logistic_regression_model.pkl')
+model = joblib.load('./logistic_regression_model.pkl')
 
 # Load the prognosis labels, allowing pickled objects (strings in this case)
-prognosis_labels = np.load('./../training_model/prognosis_labels.npy', allow_pickle=True)
+prognosis_labels = np.load('./prognosis_labels.npy', allow_pickle=True)
 
 # Load the precautions dataset
-precautions_df = pd.read_csv('./../training_model/symptom_precaution.csv')  # This CSV contains "Prognosis" and "Precautions" columns
+precautions_df = pd.read_csv('./symptom_precaution.csv')  # This CSV contains "Prognosis" and "Precautions" columns
 
 # Load the descriptions dataset
-descriptions_df = pd.read_csv('./../training_model/symptom_Description.csv')
+descriptions_df = pd.read_csv('./symptom_Description.csv')
 
 # List of all symptoms for model input
-with open('symptom_columns.json', 'r') as f:
+with open('./symptom_columns.json', 'r') as f:
     symptom_columns = json.load(f)
 
 
