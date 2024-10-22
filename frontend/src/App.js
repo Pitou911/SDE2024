@@ -12,6 +12,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Cases from "./pages/Cases";
 import PredictComp from "./components/PredictComp";
+import Contact from "./components/Contact";
 const App = () => {
   return (
     <Router>
@@ -23,6 +24,7 @@ const App = () => {
         <Route path='/about' element={<About />} />
         <Route path='/predict' element={<PredictComp/>}/>
       </Routes>
+      <Contact/>
     </Router>
   );
 };

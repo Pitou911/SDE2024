@@ -1,0 +1,28 @@
+.mission--comp{
+    background-color: #F2F7FA !important;
+    padding: 50px 150px;
+}
+.mission--comp__header{
+    text-align: center;
+}
+.mission--comp__lists{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.mission--comp__list{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 50px;
+    padding: 0 100px;
+    gap: 10px;
+}
+.mission--comp__list-img{
+    width: 200px;
+    margin: 0 auto;
+}
+.mission--comp__list-para{
+    font-size: 18px;
+}

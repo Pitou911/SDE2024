@@ -1,6 +1,7 @@
 .navbar--header {
   height: 90px;
   background-color: #bee4fa;
+  padding: 0 150px;
 }
 .navbar {
   display: flex;
