@@ -27,7 +27,7 @@ CareNest is a React-based web application that uses AI to predict possible disea
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/carenest.git
+   git clone https://github.com/Pitou911/carenest.git
    ```
 2. Navigate to the project directory:
    ```bash
