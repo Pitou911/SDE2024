@@ -29,7 +29,7 @@ export default function Nav() {
             <Link to='/about'>About us</Link>
           </li>
           <li className='navbar__list title'>
-            <Link to='/'>Log in</Link>
+            <Link to='/login'>Log in</Link>
           </li>
         </ul>
       </div>

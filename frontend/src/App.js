@@ -13,6 +13,8 @@ import About from "./pages/About";
 import Cases from "./pages/Cases";
 import PredictComp from "./components/PredictComp";
 import Contact from "./components/Contact";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 const App = () => {
   return (
     <Router>
@@ -23,6 +25,8 @@ const App = () => {
         <Route path='/cases' element={<Cases />} />
         <Route path='/about' element={<About />} />
         <Route path='/predict' element={<PredictComp/>}/>
+        <Route path='/login' element={<Login/>}/>
+        <Route path="/register" element={<Register/>}/>
       </Routes>
       <Contact/>
     </Router>
