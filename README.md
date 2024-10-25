@@ -49,3 +49,13 @@ npm start
 # or
 yarn start
 ```
+
+To start the AI model server in development mode:
+```
+pyton app.py
+```
+
+To start the backend server in development mode:
+```
+mvn spring-boot:run
+```
