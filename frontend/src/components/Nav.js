@@ -2,7 +2,7 @@ import React from "react";
 import "./Nav.css";
 import logo from "./../assets/imgs/logo.png";
 import { Link } from "react-router-dom";
-export default function Nav() {
+export default function Nav({ isAuthenticated, onLogout }) {
   return (
     <header className='navbar--header'>
       <div className='navbar'>
@@ -28,9 +28,18 @@ export default function Nav() {
           <li className='navbar__list title'>
             <Link to='/about'>About us</Link>
           </li>
-          <li className='navbar__list title'>
-            <Link to='/login'>Log in</Link>
-          </li>
+          {
+            isAuthenticated ? (
+              <li className='navbar__list title' onClick={onLogout}>
+              <Link to='/'>Sign out</Link>
+              </li>
+            ) : (
+              <li className='navbar__list title'>
+                <Link to='/login'>Log in</Link>
+              </li>
+            )
+          }
+          
         </ul>
       </div>
     </header>

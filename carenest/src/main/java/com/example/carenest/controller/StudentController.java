@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,15 +15,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.carenest.dto.LoginRequest;
+import com.example.carenest.dto.RegisterRequest;
 import com.example.carenest.entity.Student;
 import com.example.carenest.repository.StudentRepository;
+import com.example.carenest.service.StudentService;
 
 @RestController
-@RequestMapping("/students")
+@RequestMapping("/api/auth")
 public class StudentController {
 
     @Autowired
     private StudentRepository studentRepository;
+
+    @Autowired
+    private StudentService studentService; 
 
     @GetMapping
     public List<Student> getAllStudents() {
@@ -34,8 +41,6 @@ public class StudentController {
         return studentRepository.save(student);
     }
 
-    // CRUD methods can be added as needed
-    // Get a student by ID
     @GetMapping("/{id}")
     public ResponseEntity<Student> getStudentById(@PathVariable Long id) {
         Optional<Student> student = studentRepository.findById(id);
@@ -43,7 +48,6 @@ public class StudentController {
                       .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // Update a student's first name and last name
     @PutMapping("/{id}")
     public ResponseEntity<Student> updateStudent(@PathVariable Long id, @RequestBody Student updatedStudent) {
         Optional<Student> optionalStudent = studentRepository.findById(id);
@@ -58,7 +62,6 @@ public class StudentController {
         }
     }
 
-    // Delete a student by ID
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteStudent(@PathVariable Long id) {
         if (studentRepository.existsById(id)) {
@@ -67,5 +70,48 @@ public class StudentController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest) {
+        Optional<Student> student = studentService.findByEmailOrStudentCardId(loginRequest.getIdentifier());
+
+        if (student.isPresent()) {
+            // Initialize the password encoder
+            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            
+            // Check if the provided password matches the hashed password in the database
+            if (passwordEncoder.matches(loginRequest.getPassword(), student.get().getPassword())) {
+                return ResponseEntity.ok("Login successful");
+            } else {
+                return ResponseEntity.status(401).body("Invalid password");
+            }
+        } else {
+            return ResponseEntity.status(404).body("User not found");
+        }
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<Student> registerStudent(@RequestBody RegisterRequest registerRequest) {
+        // Check if the email or student ID already exists
+        if (studentRepository.existsByEmail(registerRequest.getEmail()) ||
+            studentRepository.existsByStudentCardId(registerRequest.getStudentId())) {
+            return ResponseEntity.badRequest().body(null); // You can return a meaningful error response
+        }
+
+        // Create a new Student entity
+        Student student = new Student();
+        student.setFirstName(registerRequest.getFirstName());
+        student.setLastName(registerRequest.getLastName());
+        student.setStudentCardId(registerRequest.getStudentId());
+        student.setEmail(registerRequest.getEmail());
+        
+        // Encrypt the Password
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        student.setPassword(passwordEncoder.encode(registerRequest.getPassword())); // You may want to hash the password before saving
+
+
+        Student savedStudent = studentRepository.save(student);
+        return ResponseEntity.ok(savedStudent);
     }
 }
