@@ -31,7 +31,7 @@ CareNest is a React-based web application that uses AI to predict possible disea
    ```
 2. Navigate to the project directory:
    ```bash
-   cd carenest
+   cd YOUR_DIRECTORY
    ```
 3. Install dependencies:
    ```bash
@@ -51,11 +51,11 @@ yarn start
 ```
 
 To start the AI model server in development mode:
-```
+```bash
 pyton app.py
 ```
 
 To start the backend server in development mode:
-```
+```bash
 mvn spring-boot:run
 ```
