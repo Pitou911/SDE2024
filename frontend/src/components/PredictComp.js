@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Select from "react-select"; // Import react-select
+import Select from "react-select";
+import "./PredictComp.css"
 
 const PredictComp = () => {
   const [symptomsList, setSymptomsList] = useState([]);
@@ -62,35 +63,34 @@ const PredictComp = () => {
   };
 
   return (
-    <div>
-      <h1>Prognosis Predictor</h1>
+    <div className="predict--comp">
+      <h2 className="predict--comp__title title">Prognosis Analyzer</h2>
       <form onSubmit={handleSubmit}>
         <h3>Select Symptoms:</h3>
-        <Select
+        <Select className="form--select"
           isMulti
           options={options}
           onChange={handleChange}
           placeholder='Search and select symptoms...'
         />
-        <br />
-        <button type='submit'>Predict</button>
+        <button className="title predict--btn" type='submit'>Analyze</button>
       </form>
       {error && <p style={{ color: "red" }}>{error}</p>}
-      {prediction && <h2>Predicted Prognosis: {prediction}</h2>}
+      {prediction && <h2>Estimated Prognosis: {prediction}</h2>}
       {precautions.length > 0 && (
-        <div>
+        <div className="precuation--wrapper">
           <h3>Precautions:</h3>
-          <ul>
+          <ul className="precaution--lists">
             {precautions.map((precaution, index) => (
-              <li key={index}>{precaution}</li>
+              <li className="precaution--list" key={index}>{precaution}</li>
             ))}
           </ul>
         </div>
       )}
       {description && (
-        <div>
+        <div className="disease--description__wrapper">
           <h3>Description:</h3>
-          <p>{description}</p>
+          <p className="disease--description">{description}</p>
         </div>
       )}
     </div>
