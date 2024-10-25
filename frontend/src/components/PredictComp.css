@@ -1,0 +1,25 @@
+.predict--comp{
+    margin: 20px 0;
+}
+.predict--btn{
+    margin: 10px 0;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #162634;
+    color: #F2F7FA;
+    font-weight: bold;
+}
+.form--select{
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.disease--description__wrapper,
+.precuation--wrapper{
+    margin: 20px 0;
+}
+.precaution--list,
+.disease--description{
+    font-size: 18px;
+}
