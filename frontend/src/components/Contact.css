@@ -1,0 +1,35 @@
+.contact--comp{
+    background-color: #bee4fa;
+    padding: 50px 150px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+}
+.contact--comp__title{
+    font-size: 32px ; 
+}
+.contact--comp__lists{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.contact--comp__list{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 50px;
+    padding: 0 100px;
+    gap: 10px;
+}
+.contact--comp__list-img{
+    width: 50px;
+    margin: 0 auto;
+}
+.contact--comp__list-para{
+    font-size: 18px;
+}
+.contact--comp__copyright{
+    margin-top: 20px;
+}
