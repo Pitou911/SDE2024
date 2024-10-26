@@ -16,11 +16,23 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { AuthProvider } from "./components/AuthContext";
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    localStorage.getItem('isAuthenticated') === 'true' ||
+    sessionStorage.getItem('isAuthenticated') === 'true'
+  );
 
   const handleLogout = () => {
     setIsAuthenticated(false); // Set authentication state to false
+    localStorage.removeItem('isAuthenticated');
+    sessionStorage.removeItem('isAuthenticated');
+    window.location.href = '/login';
   };
+
+  const handleSetAuthentication = (authenticated, rememberMe) => {
+    setIsAuthenticated(authenticated);
+    const storage = rememberMe ? localStorage : sessionStorage;
+    storage.setItem('isAuthenticated', authenticated);
+  }
   return (
     <AuthProvider>
       <Router>
@@ -33,8 +45,8 @@ const App = () => {
           element={isAuthenticated ? <Cases /> : <Navigate to="/login" />} 
         />
           <Route path='/about' element={<About />} />
-          <Route path='/login' element={<Login setIsAuthenticated={setIsAuthenticated}/>}/>
-          <Route path="/register" element={<Register setIsAuthenticated={setIsAuthenticated}/>}/>
+          <Route path='/login' element={<Login setIsAuthenticated={handleSetAuthentication}/>}/>
+          <Route path="/register" element={<Register setIsAuthenticated={handleSetAuthentication}/>}/>
         </Routes>
         <Contact/>
       </Router>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './Register.css'
-import { Link, useNavigate} from 'react-router-dom'
+import { Link} from 'react-router-dom'
 import registerImg from './../assets/imgs/login.png'
 export default function Register({setIsAuthenticated}) {
     const [firstName, setFirstName] = useState('');
@@ -10,7 +10,12 @@ export default function Register({setIsAuthenticated}) {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState(null);
-    const navigate = useNavigate();
+
+    const [showPassword, setShowPassword] = useState(false);
+
+    const handlePasswordToggle = () => {
+        setShowPassword((prevShowPassword) => !prevShowPassword);
+    }
     const handleRegister = async (e) => {
         e.preventDefault();
         if (password !== confirmPassword){
@@ -28,8 +33,9 @@ export default function Register({setIsAuthenticated}) {
             if(!response.ok){
                 throw new Error('Email or StudenId is already used!')
             }
+            localStorage.setItem('isAuthenticated', 'true');
             setIsAuthenticated(true);
-            navigate('/cases')
+            window.location.href = '/cases';
         }catch(error){
             setError(error.message)
         }
@@ -73,20 +79,34 @@ export default function Register({setIsAuthenticated}) {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         />
-                        <input
-                        type="password"
-                        placeholder="Password"
-                        className="register-input"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        />
-                        <input
-                        type="password"
-                        placeholder="Confirm Password"
-                        className="register-input"
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                        />
+                        <div className='password-input-container'>
+                            <input
+                            type={showPassword ? "text" : "password"}
+                            placeholder="Password"
+                            className="register-input password-input"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                            />
+                            
+                        </div>
+                        <div className='password-input-container'>
+                            <input
+                            type={showPassword ? "text" : "password"}
+                            placeholder="Confirm Password"
+                            className="register-input password-input"
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            required
+                            />
+                        </div>
+                        <label className='remember-me'>
+                            <input type='checkbox'
+                                checked={showPassword}
+                                onChange={handlePasswordToggle}
+                            />
+                            Show Password
+                        </label>
                         {error && <p className="error-message">{error}</p>}
                         <button type="submit" className="register-button title">Register</button>
                     </form>
