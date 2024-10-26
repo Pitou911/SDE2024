@@ -1,14 +1,18 @@
 import React, { useState } from 'react'
 import './Login.css'
 import loginImg from './../assets/imgs/login.png'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default function Login({setIsAuthenticated}) {
     const [identifier, setIdentifier] = useState(''); // For Email or Student ID
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
-    const navigate = useNavigate(); 
+    const [rememberMe, setRememberMe] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
+    const handlePasswordToggle = () => {
+        setShowPassword((prevShowPassword) => !prevShowPassword);
+    }
     const handleLogin = async (e)  => {
         e.preventDefault();
 
@@ -24,8 +28,10 @@ export default function Login({setIsAuthenticated}) {
             if (!response.ok) {
                 throw new Error('Invalid Credentials');
             } else {
+                const storage = rememberMe ? localStorage : sessionStorage;
+                storage.setItem('isAuthenticated', 'true');
                 setIsAuthenticated(true);
-                navigate('/cases'); // Use navigate for redirection
+                window.location.href = '/cases';
             }
         } catch (error) {
             setError(error.message);
@@ -48,20 +54,32 @@ export default function Login({setIsAuthenticated}) {
                         value={identifier}
                         onChange={(e) => setIdentifier(e.target.value)}
                         />
-                        <input
-                        type="password"
-                        placeholder="Enter Password"
-                        className="login-input"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        />
+                        <div className='password-input-container'>
+                            <input
+                            type={showPassword ? 'text':'password'}
+                            placeholder="Enter Password"
+                            className="login-input password-input"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                            />
+                            <button
+                                type="button"
+                                className="show-password-toggle"
+                                onClick={handlePasswordToggle}
+                            >
+                                {showPassword ? 'Hide' : 'Show'}
+                            </button>
+                        </div>
                         {error && <p className="error-message">{error}</p>} {/* Display error message */}
                         <div className="options-container">
-                        <label className="remember-me">
-                            <input type="checkbox" />
-                            Remember Me
-                        </label>
-                        <a href="#" className="forgot-password">Forget Password?</a>
+                            <label className="remember-me">
+                                <input type="checkbox" 
+                                checked={rememberMe}
+                                onChange={() => setRememberMe(!rememberMe)}/>
+                                Remember Me
+                            </label>
+                            <a href="/" className="forgot-password">Forget Password?</a>
                         </div>
                         <button type="submit" className="login-button title">Login</button>
                     </form>

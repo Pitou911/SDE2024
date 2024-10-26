@@ -31,11 +31,11 @@
     flex-direction: column;
     margin-top: 10px;
     gap: 10px;
+    justify-content: center;
 }
 
 .login-input {
     padding: 15px;
-    margin-bottom: 15px;
     border-radius: 30px;
     border: 1px solid #e0e0e0;
     background-color: #f6f6f6;
@@ -84,5 +84,26 @@
 .signup-link {
     color: #162634;
     text-decoration: none;
+    font-weight: bold;
+}
+
+.password-input-container {
+    position: relative;
+}
+
+.password-input {
+    padding-right: 60px; /* Space for the toggle button */
+}
+
+.show-password-toggle {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #6f6f6f;
+    font-size: 12px;
+    cursor: pointer;
     font-weight: bold;
 }
