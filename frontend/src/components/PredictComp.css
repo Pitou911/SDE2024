@@ -1,7 +1,8 @@
 .predict--comp{
     margin: 20px 0;
 }
-.predict--btn{
+.predict--btn,
+.create-case-btn{
     margin: 10px 0;
     padding: 5px 15px;
     border: none;

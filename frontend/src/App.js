@@ -10,11 +10,11 @@ import {
 import Nav from "./components/Nav";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Cases from "./pages/Cases";
 import Contact from "./components/Contact";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { AuthProvider } from "./components/AuthContext";
+import ParentComponent from "./pages/ParentComponent";
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(
     localStorage.getItem('isAuthenticated') === 'true' ||
@@ -44,7 +44,7 @@ const App = () => {
           <Route path='/' element={<Home />} />
           <Route 
           path="/cases" 
-          element={isAuthenticated ? <Cases /> : <Navigate to="/login" />} 
+          element={isAuthenticated ? <ParentComponent /> : <Navigate to="/login" />} 
         />
           <Route path='/about' element={<About />} />
           <Route path='/login' element={<Login setIsAuthenticated={handleSetAuthentication}/>}/>
