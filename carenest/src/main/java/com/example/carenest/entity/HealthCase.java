@@ -1,64 +1,40 @@
 package com.example.carenest.entity;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
-public class HealthCase{
+@Table(name = "health_case")
+public class HealthCase {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private LocalDate date;
+    @Column(name = "disease_name", nullable = false)
     private String diseaseName;
 
     @ManyToOne
-    @JoinColumn(name="student_id")
+    @JoinColumn(name = "student_id", nullable = false)
     private Student student;
 
-    @ManyToMany
-    @JoinTable(
-        name = "case_disease",
-        joinColumns = @JoinColumn(name = "case_id"),
-        inverseJoinColumns = @JoinColumn(name = "disease_id")
-    )
-private List<Disease> disease = new ArrayList<>();
+    @Column(name = "date", nullable = false) // New date column as a String
+    private String date;
 
-    // Default constructor
-    public HealthCase() {}
-
-    // Parameterized constructor
-    public HealthCase(LocalDate date, String diseaseName, Student student) {
-        this.date = date;
-        this.diseaseName = diseaseName;
-        this.student = student;
-    }
-
-    // Getters and setters
+    // Getters and Setters
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
     }
 
     public String getDiseaseName() {
@@ -77,11 +53,11 @@ private List<Disease> disease = new ArrayList<>();
         this.student = student;
     }
 
-    public List<Disease> getDisease() {
-        return disease;
+    public String getDate() {
+        return date;
     }
 
-    public void setDisease(List<Disease> disease) {
-        this.disease = disease;
+    public void setDate(String date) {
+        this.date = date;
     }
 }

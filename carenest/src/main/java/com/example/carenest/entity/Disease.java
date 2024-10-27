@@ -1,47 +1,41 @@
 package com.example.carenest.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Lob;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "disease")
 public class Disease {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "name", nullable = false, unique = true)
     private String name;
+
+    @Lob 
+    @Column(name = "description", nullable = false)
     private String description;
 
+    @Column(name = "precaution1")
     private String precaution1;
+
+    @Column(name = "precaution2")
     private String precaution2;
+
+    @Column(name = "precaution3")
     private String precaution3;
+
+    @Column(name = "precaution4")
     private String precaution4;
 
-    @ManyToMany(mappedBy = "disease")
-    private List<HealthCase> cases = new ArrayList<>();
-
-    // Getters, setters, and constructors
-    // Default constructor
-    public Disease() {}
-
-    // Parameterized constructor
-    public Disease(String name, String description, String precaution1, String precaution2, String precaution3, String precaution4) {
-        this.name = name;
-        this.description = description;
-        this.precaution1 = precaution1;
-        this.precaution2 = precaution2;
-        this.precaution3 = precaution3;
-        this.precaution4 = precaution4;
-    }
-
-    // Getters and setters
+    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -96,13 +90,5 @@ public class Disease {
 
     public void setPrecaution4(String precaution4) {
         this.precaution4 = precaution4;
-    }
-
-    public List<HealthCase> getHealthCases() {
-        return cases;
-    }
-
-    public void setHealthCases(List<HealthCase> cases) {
-        this.cases = cases;
     }
 }

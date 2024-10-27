@@ -25,6 +25,8 @@ const App = () => {
     setIsAuthenticated(false); // Set authentication state to false
     localStorage.removeItem('isAuthenticated');
     sessionStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('student_id');
+    sessionStorage.removeItem('student_id');
     window.location.href = '/login';
   };
 
@@ -46,7 +48,7 @@ const App = () => {
         />
           <Route path='/about' element={<About />} />
           <Route path='/login' element={<Login setIsAuthenticated={handleSetAuthentication}/>}/>
-          <Route path="/register" element={<Register setIsAuthenticated={handleSetAuthentication}/>}/>
+          <Route path="/register" element={<Register/>}/>
         </Routes>
         <Contact/>
       </Router>

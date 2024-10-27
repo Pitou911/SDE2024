@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import './Register.css'
 import { Link} from 'react-router-dom'
 import registerImg from './../assets/imgs/login.png'
-export default function Register({setIsAuthenticated}) {
+export default function Register() {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    const [studentId, setStudentId] = useState('');
+    const [studentCard, setStudentCard] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -28,14 +28,12 @@ export default function Register({setIsAuthenticated}) {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({firstName, lastName, studentId, email, password})
+                body: JSON.stringify({firstName, lastName, studentCard, email, password})
             });
             if(!response.ok){
                 throw new Error('Email or StudenId is already used!')
             }
-            localStorage.setItem('isAuthenticated', 'true');
-            setIsAuthenticated(true);
-            window.location.href = '/cases';
+            window.location.href = '/login';
         }catch(error){
             setError(error.message)
         }
@@ -69,8 +67,8 @@ export default function Register({setIsAuthenticated}) {
                         type="text"
                         placeholder="Student ID"
                         className="register-input"
-                        value={studentId}
-                        onChange={(e) => setStudentId(e.target.value)}
+                        value={studentCard}
+                        onChange={(e) => setStudentCard(e.target.value)}
                         />
                         <input
                         type="text"

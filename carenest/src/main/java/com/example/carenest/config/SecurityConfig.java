@@ -13,10 +13,12 @@ public class SecurityConfig {
     @SuppressWarnings({ "removal", "deprecation" })
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf().disable()
+        http.cors()
+            .and()
+            .csrf().disable()
             .authorizeRequests()
-            .requestMatchers("/api/auth/login", "/api/auth/register").permitAll() 
-            .anyRequest().authenticated(); // All other endpoints require authentication
+            .requestMatchers("/api/auth/login", "/api/auth/register", "/cases").permitAll() 
+            .anyRequest().permitAll(); // All other endpoints require authentication
         return http.build();
     }
 }

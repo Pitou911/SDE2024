@@ -11,7 +11,7 @@ public class RegisterRequest {
     private String lastName;
 
     @NotBlank
-    private String studentId;
+    private String studentCard;
 
     @NotBlank
     private String email;
@@ -23,10 +23,10 @@ public class RegisterRequest {
     public RegisterRequest(){
     }
 
-    public RegisterRequest(String firstname, String lastname, String studentId, String email, String password){
+    public RegisterRequest(String firstname, String lastname, String studentCard, String email, String password){
         this.firstName = firstname;
         this.lastName = lastname;
-        this.studentId = studentId;
+        this.studentCard = studentCard;
         this.email = email;
         this.password = password;
     }
@@ -43,11 +43,11 @@ public class RegisterRequest {
     public void setLastName(String lastName){
         this.lastName = lastName;
     }
-    public String getStudentId(){
-        return studentId;
+    public String getStudentCard(){
+        return studentCard;
     }
-    public void setStudentId(String studentId){
-        this.studentId = studentId;
+    public void setStudentCard(String studentCard){
+        this.studentCard = studentCard;
     }
     public String getEmail(){
         return email;
