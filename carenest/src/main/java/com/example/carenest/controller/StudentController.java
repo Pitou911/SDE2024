@@ -1,6 +1,8 @@
 package com.example.carenest.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,8 +75,8 @@ public class StudentController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest) {
-        Optional<Student> student = studentService.findByEmailOrStudentCardId(loginRequest.getIdentifier());
+    public ResponseEntity<Map<String,String>> login(@RequestBody LoginRequest loginRequest) {
+        Optional<Student> student = studentService.findByEmailOrStudentCard(loginRequest.getIdentifier());
 
         if (student.isPresent()) {
             // Initialize the password encoder
@@ -82,12 +84,15 @@ public class StudentController {
             
             // Check if the provided password matches the hashed password in the database
             if (passwordEncoder.matches(loginRequest.getPassword(), student.get().getPassword())) {
-                return ResponseEntity.ok("Login successful");
+                Map<String, String> response = new HashMap<>();
+                response.put("message", "Login successful");
+                response.put("student_id", student.get().getId().toString());
+                return ResponseEntity.ok(response);
             } else {
-                return ResponseEntity.status(401).body("Invalid password");
+                return ResponseEntity.status(401).body(Map.of("error", "Invalid password"));
             }
         } else {
-            return ResponseEntity.status(404).body("User not found");
+            return ResponseEntity.status(404).body(Map.of("error", "User not found"));
         }
     }
 
@@ -95,7 +100,7 @@ public class StudentController {
     public ResponseEntity<Student> registerStudent(@RequestBody RegisterRequest registerRequest) {
         // Check if the email or student ID already exists
         if (studentRepository.existsByEmail(registerRequest.getEmail()) ||
-            studentRepository.existsByStudentCardId(registerRequest.getStudentId())) {
+            studentRepository.existsByStudentCard(registerRequest.getStudentCard())) {
             return ResponseEntity.badRequest().body(null); // You can return a meaningful error response
         }
 
@@ -103,7 +108,7 @@ public class StudentController {
         Student student = new Student();
         student.setFirstName(registerRequest.getFirstName());
         student.setLastName(registerRequest.getLastName());
-        student.setStudentCardId(registerRequest.getStudentId());
+        student.setStudentCard(registerRequest.getStudentCard());
         student.setEmail(registerRequest.getEmail());
         
         // Encrypt the Password

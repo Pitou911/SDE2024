@@ -26,13 +26,21 @@ export default function Login({setIsAuthenticated}) {
             });
 
             if (!response.ok) {
-                throw new Error('Invalid Credentials');
+                console.log('Response Status:', response.status);
+                const errorData = await response.json(); // Parse the error response
+                console.log('Response Error:', errorData);
+                throw new Error(errorData.error || 'Invalid Credentials');
             } else {
+                const data = await response.json(); // This now returns { message, student_card_id }
+                console.log(data)
                 const storage = rememberMe ? localStorage : sessionStorage;
                 storage.setItem('isAuthenticated', 'true');
+                storage.setItem('student_id', data.student_id);
+                console.log(data.message); // Log the message
                 setIsAuthenticated(true);
                 window.location.href = '/cases';
             }
+            
         } catch (error) {
             setError(error.message);
         }
