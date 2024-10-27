@@ -1,8 +1,8 @@
-.cases--comp{
+.parent--comp{
     padding: 50px 150px;
     background-color: #F2F7FA;
 }
-.cases--comp__wrapper{
+.parent--comp__wrapper{
     width: 100%;
     max-width: 1000px;
 }

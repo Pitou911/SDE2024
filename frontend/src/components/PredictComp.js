@@ -3,7 +3,7 @@
   import Select from "react-select";
   import "./PredictComp.css"
 
-  const PredictComp = () => {
+  const PredictComp = ({addNewCase}) => {
     const [symptomsList, setSymptomsList] = useState([]);
     const [selectedSymptoms, setSelectedSymptoms] = useState([]);
     const [prediction, setPrediction] = useState(null);
@@ -11,7 +11,6 @@
     const [description, setDescription] = useState("");
     const [studentId, setStudentId] = useState("");
     const [error, setError] = useState("");
-    const [isCaseCreated, setIsCaseCreated] = useState(false);
     useEffect(() => {
       // Check for student_card_id in both localStorage and sessionStorage
       const storedStudentId =
@@ -66,7 +65,6 @@
         setPrediction(response.data.prognosis);
         setPrecautions(response.data.precautions || []);
         setDescription(response.data.description);
-        setIsCaseCreated(false);
       } catch (err) {
         console.error(err);
         setError("Error occurred while making the prediction.");
@@ -79,19 +77,20 @@
         diseaseName: prediction,
         studentId: studentId, 
       };
-      console.log(healthCase)
       try {
         await axios.post("http://localhost:8080/health-cases", healthCase, {
           headers: {
             "Content-Type": "application/json",
           },
         });
-        setIsCaseCreated(true); // Update state to indicate case was created
+        addNewCase(healthCase); 
+        window.location.reload(); 
       } catch (err) {
         console.error(err);
         setError("Error occurred while creating the health case.");
       }
     };
+    
     return (
       <div className="predict--comp">
         <h2 className="predict--comp__title title">Prognosis Analyzer</h2>
@@ -123,12 +122,7 @@
             <p className="disease--description">{description}</p>
           </div>
         )}
-        <div className="student-card-id__wrapper">
-          <h3>Your Student Card ID:</h3>
-          <p>{studentId}</p>
-        </div>
-        <button className="title create-case-btn" onClick={handleCreateCase}>Create Health Case</button>
-        {isCaseCreated && <p>Health case created successfully!</p>}
+        {description && <button className="title create-case-btn" onClick={handleCreateCase}>Save Case</button>}
       </div>
     );
   };
