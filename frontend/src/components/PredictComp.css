@@ -2,7 +2,10 @@
     margin: 20px 0;
 }
 .predict--btn,
-.create-case-btn{
+.create-case-btn,
+.save-change-btn,
+.change-pass-btn
+{
     margin: 10px 0;
     padding: 5px 15px;
     border: none;

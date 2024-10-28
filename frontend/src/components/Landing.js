@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "./../assets/imgs/logo.png";
 import "./Landing.css";
+import { Link } from "react-router-dom";
 function Landing() {
   return (
     <div className='landing__page'>
@@ -17,10 +18,10 @@ function Landing() {
         </div>
         <div className='landing__page--description--btns'>
           <div className='landing__page--description--btn--login'>
-            <button className='title'>Login</button>
+            <button className='title login-title'><Link to='/login'>Login</Link></button>
           </div>
           <div className='landing__page--description--btn--register'>
-            <button className='title'>Register</button>
+            <button className='title'><Link to='/register'>Register</Link></button>
           </div>
         </div>
       </div>

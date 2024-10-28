@@ -1,10 +1,12 @@
 .register--comp{
     background-color: #F2F7FA;
     padding: 50px 0;
+    height: 100vh;
 }
 .register--comp__wrapper{
     width: 100%;
     max-width: 700px;
+    height: 100%;
     margin: 0 auto;
     padding: 50px 0;
     background-color: #fff;
@@ -14,7 +16,7 @@
     box-shadow: 73px 59px 57px -60px rgba(22,38,52,1);
 }
 .register--comp__img-wrapper{
-    width: 70%;
+    width: 50%;
     margin: 0 auto;
 }
 .register--comp__img{

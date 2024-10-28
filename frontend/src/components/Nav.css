@@ -31,3 +31,9 @@ img {
   font-size: 20px;
   font-weight: bold;
 }
+.navbar__list img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+}

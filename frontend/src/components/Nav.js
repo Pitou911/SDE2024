@@ -2,14 +2,15 @@ import React from "react";
 import "./Nav.css";
 import logo from "./../assets/imgs/logo.png";
 import { Link } from "react-router-dom";
-export default function Nav({ isAuthenticated, onLogout }) {
+import user from "./../assets/imgs/user.png"
+export default function Nav({ isAuthenticated }) {
   return (
     <header className='navbar--header'>
       <div className='navbar'>
         <div className='navbar__logo'>
           <div className='navbar__logo--img'>
             <Link to='/'>
-              <img src={logo}></img>
+              <img src={logo} alt="logo-img"></img>
             </Link>
           </div>
           <div className='navbar__logo--title title'>
@@ -30,8 +31,8 @@ export default function Nav({ isAuthenticated, onLogout }) {
           </li>
           {
             isAuthenticated ? (
-              <li className='navbar__list title' onClick={onLogout}>
-              <Link to='/'>Sign out</Link>
+              <li className='navbar__list'>
+                <Link to='/profile'><img alt="user-img" src={user}></img></Link>
               </li>
             ) : (
               <li className='navbar__list title'>

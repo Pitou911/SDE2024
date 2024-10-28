@@ -19,7 +19,7 @@ export default function Register() {
     const handleRegister = async (e) => {
         e.preventDefault();
         if (password !== confirmPassword){
-            setError("Password do not match");
+            setError("Passwords do not match");
             return;
         }
         try{

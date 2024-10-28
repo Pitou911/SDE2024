@@ -3,10 +3,10 @@ import './Accordion.css';
 
 const AccordionItem = ({ caseData, isOpen, onToggle }) => {
   const precautions = [
-    caseData.precaution1,
-    caseData.precaution2,
-    caseData.precaution3,
-    caseData.precaution4,
+    caseData.precautions[0],
+    caseData.precautions[1],
+    caseData.precautions[2],
+    caseData.precautions[3],
   ].filter(Boolean); // Filter out any undefined or null values
   return (
     <div className="accordion-item">

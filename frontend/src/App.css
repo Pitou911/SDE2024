@@ -7,10 +7,15 @@
   color: #162634;
   font-family: "Saira Condensed", sans-serif;
 }
-
+button{
+  cursor: pointer;
+}
 .title {
   
   text-transform: uppercase;
+}
+.login-title a{
+  color: #F2F7FA !important;
 }
 h1 {
   font-size: 72px;
@@ -33,4 +38,8 @@ a {
 body {
   width: 100%;
   margin: 0 auto;
+}
+.error-message{
+  color: red;
+  font-size: 12px;
 }

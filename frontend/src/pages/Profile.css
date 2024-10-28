@@ -1,0 +1,42 @@
+.profile--comp{
+    padding: 50px 150px;
+    background-color: #F2F7FA;
+}
+
+.logout--btn a{
+    color: #F2F7FA;
+}
+.field--label{
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+.field--data{
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.field--btn{
+    border: none;
+    padding: 10px;
+    background: none;
+    margin: auto 0;
+}
+.logout--btn{
+    margin: 10px 0;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(100, 0, 0);
+    color: #F2F7FA;
+    font-weight: bold;
+}
+
+.logout--btn:hover{
+    cursor: pointer;
+    background-color: rgb(207, 24, 24);
+}
+.change-pass-field
+{
+    margin-bottom: 5px;
+}
