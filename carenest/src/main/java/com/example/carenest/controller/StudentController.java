@@ -19,9 +19,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.carenest.dto.LoginRequest;
 import com.example.carenest.dto.RegisterRequest;
+import com.example.carenest.dto.StudentUpdateRequest;
 import com.example.carenest.entity.Student;
 import com.example.carenest.repository.StudentRepository;
 import com.example.carenest.service.StudentService;
+
+
 
 @RestController
 @RequestMapping("/api/auth")
@@ -51,18 +54,44 @@ public class StudentController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Student> updateStudent(@PathVariable Long id, @RequestBody Student updatedStudent) {
-        Optional<Student> optionalStudent = studentRepository.findById(id);
-        if (optionalStudent.isPresent()) {
-            Student student = optionalStudent.get();
-            student.setFirstName(updatedStudent.getFirstName());
-            student.setLastName(updatedStudent.getLastName());
-            Student savedStudent = studentRepository.save(student);
-            return ResponseEntity.ok(savedStudent);
-        } else {
+    public ResponseEntity<Map<String, String>> updateStudent(@PathVariable Long id, @RequestBody StudentUpdateRequest studentUpdates) {
+        
+        Optional<Student> existingStudentOpt = studentRepository.findById(id);
+        
+        if (!existingStudentOpt.isPresent()) {
             return ResponseEntity.notFound().build();
         }
+
+        Student existingStudent = existingStudentOpt.get();
+        Map<String, String> response = new HashMap<>();
+        
+        if (studentUpdates.getFirstName() != null) {
+            existingStudent.setFirstName(studentUpdates.getFirstName());
+            response.put("firstName", "First name updated successfully!");
+        }
+
+        if (studentUpdates.getLastName() != null) {
+            existingStudent.setLastName(studentUpdates.getLastName());
+            response.put("lastName", "Last name updated successfully!");
+        }
+
+        // Handle password update with current password verification
+        if (studentUpdates.getNewPassword() != null && studentUpdates.getCurrentPassword() != null) {
+            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+            if (passwordEncoder.matches(studentUpdates.getCurrentPassword(), existingStudent.getPassword())) {
+                existingStudent.setPassword(passwordEncoder.encode(studentUpdates.getNewPassword()));
+                response.put("password", "Password updated successfully!");
+            } else {
+                return ResponseEntity.status(401).body(Map.of("error", "Current password is incorrect!"));
+            }
+        }
+
+        studentRepository.save(existingStudent);
+        return ResponseEntity.ok(response);
     }
+
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteStudent(@PathVariable Long id) {
@@ -114,7 +143,6 @@ public class StudentController {
         // Encrypt the Password
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         student.setPassword(passwordEncoder.encode(registerRequest.getPassword())); // You may want to hash the password before saving
-
 
         Student savedStudent = studentRepository.save(student);
         return ResponseEntity.ok(savedStudent);

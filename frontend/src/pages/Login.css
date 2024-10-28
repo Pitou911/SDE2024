@@ -1,6 +1,7 @@
 .login--comp{
     background-color: #F2F7FA;
     padding: 50px 0;
+    height: 100vh;
 }
 .login--comp__wrapper{
     width: 100%;
