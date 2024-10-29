@@ -40,3 +40,8 @@
 {
     margin-bottom: 5px;
 }
+.delete-btn{
+    margin-left: 10px;
+    background-color: rgb(100, 0, 0);
+    color: #F2F7FA;
+}
