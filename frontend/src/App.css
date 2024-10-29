@@ -45,14 +45,16 @@ body {
 }
 
 @media screen and (max-width: 767px){
+  .landing__page{
+    height: 50vh !important;
+  }
   .register--comp,
   .profile--comp,
   .parent--comp,
   .login--comp,
   .about--comp,
   .navbar--header,
-  .landing__page,
-  .contact--comp{
+  .landing__page{
     padding: 0 10px !important;
   }
   .landing__page{
@@ -71,16 +73,26 @@ body {
   h1{
     font-size: 32px;
   }
+  p{
+    font-size: 14px !important;
+  }
+  h2{
+    font-size: 24px !important;
+  }
   .landing__page--description--btns{
     justify-content: center !important; 
   }
   .landing__page--description--btns button{
     font-size: 14px !important;
   }
-  .mission--comp{
+  .mission--comp,
+  .contact--comp{
     padding: 10px !important;
   }
   .mission--comp__list-img{
     width: 50px !important;
+  }
+  .contact--comp__lists{
+    flex-direction: column !important;
   }
 }
