@@ -194,6 +194,9 @@ const Profile = ({ onLogout }) => {
         <button onClick={handleSave} className='save-change-btn' disabled={!hasChanges}>
             Save Changes
         </button>
+        <button className='title save-change-btn delete-btn'>
+            Delete
+        </button>
         <br />
         <button className='title logout--btn' onClick={onLogout}>
             <Link to='/'>Sign out</Link>

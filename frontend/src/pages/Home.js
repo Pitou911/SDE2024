@@ -1,5 +1,4 @@
 import React from "react";
-import "./Home.css";
 import Landing from "../components/Landing";
 import Mission from "../components/Mission";
 function Home() {
