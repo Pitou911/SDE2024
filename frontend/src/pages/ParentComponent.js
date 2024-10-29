@@ -37,7 +37,7 @@ const ParentComponent = () => {
     };
 
     fetchCases();
-  }, [setCases]);
+  }, [setCases, studentId]);
 
   // Function to add a new case to the list
   const addNewCase = (newCase) => {
