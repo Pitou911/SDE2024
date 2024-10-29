@@ -16,7 +16,6 @@ public class StudentService {
 
     // Method to check if a student exists by email or student ID
     public Optional<Student> findByEmailOrStudentCard(String identifier) {
-        // You can call your repository method here with a placeholder for the student card ID
         return studentRepository.findByEmailOrStudentCard(identifier, identifier);
     }
 }
