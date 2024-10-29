@@ -52,7 +52,6 @@ body {
   .profile--comp,
   .parent--comp,
   .login--comp,
-  .about--comp,
   .navbar--header,
   .landing__page{
     padding: 0 10px !important;
@@ -74,7 +73,7 @@ body {
     font-size: 32px;
   }
   p{
-    font-size: 14px !important;
+    font-size: 12px !important;
   }
   h2{
     font-size: 24px !important;
@@ -86,7 +85,8 @@ body {
     font-size: 14px !important;
   }
   .mission--comp,
-  .contact--comp{
+  .contact--comp,
+  .about--comp{
     padding: 10px !important;
   }
   .mission--comp__list-img{
@@ -94,5 +94,24 @@ body {
   }
   .contact--comp__lists{
     flex-direction: column !important;
+  }
+  .login--comp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .login--comp__img-wrapper{
+    width: 50% !important;
+  }
+  .login-input{
+    padding: 10px !important;
+    font-size: 12px !important;
+  }
+  .remember-me{
+    font-size: 12px !important;
+  }
+  .login-button{
+    padding: 10px !important;
+    font-size: 12px !important;
   }
 }
