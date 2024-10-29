@@ -43,3 +43,36 @@ body {
   color: red;
   font-size: 12px;
 }
+
+@media screen and (max-width: 767px){
+  .navbar__logo--title{
+    display: none;
+  }
+  .register--comp,
+  .profile--comp,
+  .parent--comp,
+  .login--comp,
+  .about--comp,
+  .navbar--header,
+  .mission--comp,
+  .landing__page,
+  .contact--comp{
+    padding: 0px !important;
+  }
+  .landing__page--description{
+    flex: 100%;
+  }
+  .landing__page--logo{
+    display: none;
+  }
+  .landing__page--description--slogan p{
+    font-size: 14px !important;
+  }
+  h1{
+    font-size: 32px;
+  }
+  .landing__page--description--btns button{
+    padding: 5px 10px !important;
+    font-size: 14px !important;
+  }
+}
