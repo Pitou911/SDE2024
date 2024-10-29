@@ -45,19 +45,18 @@ body {
 }
 
 @media screen and (max-width: 767px){
-  .navbar__logo--title{
-    display: none;
-  }
   .register--comp,
   .profile--comp,
   .parent--comp,
   .login--comp,
   .about--comp,
   .navbar--header,
-  .mission--comp,
   .landing__page,
   .contact--comp{
-    padding: 0px !important;
+    padding: 0 10px !important;
+  }
+  .landing__page{
+    text-align: center;
   }
   .landing__page--description{
     flex: 100%;
@@ -65,14 +64,23 @@ body {
   .landing__page--logo{
     display: none;
   }
-  .landing__page--description--slogan p{
+  .landing__page--description--slogan p,
+  .mission--comp__list-para{
     font-size: 14px !important;
   }
   h1{
     font-size: 32px;
   }
+  .landing__page--description--btns{
+    justify-content: center !important; 
+  }
   .landing__page--description--btns button{
-    padding: 5px 10px !important;
     font-size: 14px !important;
+  }
+  .mission--comp{
+    padding: 10px !important;
+  }
+  .mission--comp__list-img{
+    width: 50px !important;
   }
 }
