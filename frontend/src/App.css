@@ -95,23 +95,4 @@ body {
   .contact--comp__lists{
     flex-direction: column !important;
   }
-  .login--comp{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .login--comp__img-wrapper{
-    width: 50% !important;
-  }
-  .login-input{
-    padding: 10px !important;
-    font-size: 12px !important;
-  }
-  .remember-me{
-    font-size: 12px !important;
-  }
-  .login-button{
-    padding: 10px !important;
-    font-size: 12px !important;
-  }
 }
