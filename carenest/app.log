@@ -6219,3 +6219,28 @@ This generated password is for development use only. Your security configuration
 2024-10-30T11:30:40.244+01:00  INFO 2628 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-10-30T11:30:40.246+01:00  INFO 2628 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-10-30T11:30:40.251+01:00  INFO 2628 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-10-30T16:53:43.057+01:00  INFO 16700 --- [main] c.e.carenest.CarenestApplicationTests    : Starting CarenestApplicationTests using Java 23 with PID 16700 (started by User in D:\sde\SDE2024\carenest)
+2024-10-30T16:53:43.061+01:00  INFO 16700 --- [main] c.e.carenest.CarenestApplicationTests    : No active profile set, falling back to 1 default profile: "default"
+2024-10-30T16:53:45.558+01:00  INFO 16700 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-30T16:53:45.690+01:00  INFO 16700 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 120 ms. Found 3 JPA repository interfaces.
+2024-10-30T16:53:46.786+01:00  INFO 16700 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-30T16:53:46.990+01:00  INFO 16700 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-30T16:53:47.074+01:00  INFO 16700 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-10-30T16:53:48.110+01:00  INFO 16700 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-30T16:53:48.230+01:00  INFO 16700 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-10-30T16:53:49.459+01:00  INFO 16700 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@16e07bae
+2024-10-30T16:53:49.467+01:00  INFO 16700 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-10-30T16:53:52.930+01:00  INFO 16700 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-30T16:53:53.992+01:00  INFO 16700 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-30T16:53:55.472+01:00  WARN 16700 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-30T16:53:55.540+01:00  WARN 16700 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 9ac8f773-a384-405e-a14e-2b173ca9c325
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2024-10-30T16:53:55.600+01:00  INFO 16700 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2024-10-30T16:53:56.936+01:00  INFO 16700 --- [main] c.e.carenest.CarenestApplicationTests    : Started CarenestApplicationTests in 14.554 seconds (process running for 16.928)
+2024-10-30T16:53:57.898+01:00  INFO 16700 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-30T16:53:57.910+01:00  INFO 16700 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-10-30T16:53:57.942+01:00  INFO 16700 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
