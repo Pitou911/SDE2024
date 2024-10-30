@@ -50,7 +50,6 @@ body {
   }
   .register--comp,
   .profile--comp,
-  .parent--comp,
   .login--comp,
   .navbar--header,
   .landing__page{
@@ -86,6 +85,7 @@ body {
   }
   .mission--comp,
   .contact--comp,
+  .parent--comp,
   .about--comp{
     padding: 10px !important;
   }
