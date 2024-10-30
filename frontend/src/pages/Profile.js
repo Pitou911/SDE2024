@@ -220,7 +220,6 @@ const Profile = ({ onLogout }) => {
             Delete Account
         </button>}
 
-        {/* Password Confirmation Field and Submit Button */}
         {showPasswordField && (
           <div className="password-confirmation">
             <input
