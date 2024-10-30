@@ -45,3 +45,6 @@
     background-color: rgb(100, 0, 0);
     color: #F2F7FA;
 }
+.password-confirmation input:placeholder-shown{
+    font-size: 18px;
+}

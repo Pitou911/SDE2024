@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -98,6 +99,24 @@ public class StudentController {
         if (studentRepository.existsById(id)) {
             studentRepository.deleteById(id);
             return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    @PostMapping("/{id}/verify-password")
+    public ResponseEntity<Void> verifyPassword(@PathVariable Long id, @RequestBody Map<String, String> payload) {
+        Optional<Student> studentOpt = studentRepository.findById(id);
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        if (studentOpt.isPresent()) {
+            Student student = studentOpt.get();
+            String inputPassword = payload.get("password");
+
+            // Check if the password matches
+            if (passwordEncoder.matches(inputPassword, student.getPassword())) {
+                return ResponseEntity.ok().build();
+            } else {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build(); // Password is incorrect
+            }
         } else {
             return ResponseEntity.notFound().build();
         }
