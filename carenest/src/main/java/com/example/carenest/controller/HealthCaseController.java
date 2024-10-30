@@ -27,6 +27,9 @@ public class HealthCaseController {
     public ResponseEntity<HealthCase> createHealthCase(@RequestBody HealthCaseRequest request) {
         // Create a HealthCase and ensure it returns the correct type
         HealthCase healthCase = healthCaseService.createHealthCase(request);
+        if(healthCase == null){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST)
+        }
         return ResponseEntity.ok(healthCase);
     }
 
