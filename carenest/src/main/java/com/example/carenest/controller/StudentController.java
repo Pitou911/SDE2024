@@ -18,12 +18,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.carenest.dto.ErrorResponse;
 import com.example.carenest.dto.LoginRequest;
 import com.example.carenest.dto.RegisterRequest;
 import com.example.carenest.dto.StudentUpdateRequest;
 import com.example.carenest.entity.Student;
 import com.example.carenest.repository.StudentRepository;
 import com.example.carenest.service.StudentService;
+
+import jakarta.validation.Valid;
 
 
 
@@ -145,8 +148,13 @@ public class StudentController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<Student> registerStudent(@RequestBody RegisterRequest registerRequest) {
-        // Check if the email or student ID already exists
+    public ResponseEntity<?> registerStudent(@Valid @RequestBody RegisterRequest registerRequest) {
+        if (registerRequest.getPassword() == null || registerRequest.getPassword().isEmpty()) {
+            return ResponseEntity.badRequest().body(new ErrorResponse("Password cannot be null or empty"));
+        }
+        if(registerRequest.getEmail() == null || registerRequest.getEmail().isEmpty()){
+            return ResponseEntity.badRequest().body(new ErrorResponse("Email cannot be null or empty"));
+        }
         if (studentRepository.existsByEmail(registerRequest.getEmail()) ||
             studentRepository.existsByStudentCard(registerRequest.getStudentCard())) {
             return ResponseEntity.badRequest().body(null); // You can return a meaningful error response
@@ -164,6 +172,6 @@ public class StudentController {
         student.setPassword(passwordEncoder.encode(registerRequest.getPassword())); // You may want to hash the password before saving
 
         Student savedStudent = studentRepository.save(student);
-        return ResponseEntity.ok(savedStudent);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedStudent);
     }
 }
