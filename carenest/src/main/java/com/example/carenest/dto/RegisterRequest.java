@@ -13,13 +13,12 @@ public class RegisterRequest {
     @NotBlank
     private String studentCard;
 
-    @NotBlank
+    @NotBlank(message= "Email cannot be null or empty")
     private String email;
 
-    @NotBlank
+    @NotBlank(message= "Password cannot be null or empty")
     private String password;
 
-    // Getters and setters
     public RegisterRequest(){
     }
 
