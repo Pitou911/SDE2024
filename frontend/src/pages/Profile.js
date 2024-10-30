@@ -21,6 +21,8 @@ const Profile = ({ onLogout }) => {
   const [hasChanges, setHasChanges] = useState(false); 
   const [msg, setMsg] = useState("");
   const [error, setError] = useState("");
+  const [showPasswordField, setShowPasswordField] = useState(false);
+  const [password, setPassword] = useState("");
 
   const fetchUserData = async () => {
     const studentId = localStorage.getItem("student_id") || sessionStorage.getItem("student_id");
@@ -36,6 +38,24 @@ const Profile = ({ onLogout }) => {
     fetchUserData();
   }, []);
 
+  // Handle account deletion with password verification
+  const handleDeleteAccount = async () => {
+    const studentId = localStorage.getItem("student_id") || sessionStorage.getItem("student_id");
+
+    try {
+      const verifyResponse = await axios.post(`http://localhost:8080/api/auth/${studentId}/verify-password`, { password });
+      if (verifyResponse.status === 200) {
+        await axios.delete(`http://localhost:8080/api/auth/${studentId}`);
+        onLogout();
+      }
+    } catch (error) {
+      console.error("Error deleting account:", error);
+      setError("Incorrect password. Account deletion failed.");
+    }
+  };
+  const handleShowPasswordField = () => {
+    setShowPasswordField(true);
+  };
   const handleEditClick = (field) => {
     setEditMode((prevEditMode) => ({
       ...prevEditMode,
@@ -51,6 +71,9 @@ const Profile = ({ onLogout }) => {
     }));
     setHasChanges(true); 
     setError("");
+  };
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
   };
 
   const handleSave = async () => {
@@ -172,13 +195,13 @@ const Profile = ({ onLogout }) => {
                 />
                 </div>
                 <div className='change-pass-field'>
-                <label className='field--label'>Confirm New Password:</label>
-                <input
-                    className='field--data'
-                    type="password"
-                    value={userData.confirmNewPassword}
-                    onChange={(e) => handleChange("confirmNewPassword", e.target.value)}
-                />
+                  <label className='field--label'>Confirm New Password:</label>
+                  <input
+                      className='field--data'
+                      type="password"
+                      value={userData.confirmNewPassword}
+                      onChange={(e) => handleChange("confirmNewPassword", e.target.value)}
+                  />
                 </div>
             </>
             ) : (
@@ -187,16 +210,30 @@ const Profile = ({ onLogout }) => {
             </button>
             )}
         </div>
-
         {msg && <p style={{ color: "green" }}>{msg}</p>}
-        {error && <p style={{ color: "red" }}>{error}</p>} 
+        
         
         <button onClick={handleSave} className='save-change-btn' disabled={!hasChanges}>
             Save Changes
         </button>
-        <button className='title save-change-btn delete-btn'>
-            Delete
-        </button>
+        {!showPasswordField && <button className='title save-change-btn delete-btn' onClick={handleShowPasswordField}>
+            Delete Account
+        </button>}
+
+        {/* Password Confirmation Field and Submit Button */}
+        {showPasswordField && (
+          <div className="password-confirmation">
+            <input
+              className='field--data'
+              type="password"
+              placeholder="Enter your password to confirm"
+              value={password}
+              onChange={handlePasswordChange}
+            />
+            <button className='delete-btn title save-change-btn' onClick={handleDeleteAccount}>Confirm Delete</button>
+          </div>
+        )}
+        {error && <p style={{ color: "red" }}>{error}</p>} 
         <br />
         <button className='title logout--btn' onClick={onLogout}>
             <Link to='/'>Sign out</Link>
