@@ -47,6 +47,19 @@ public class StudentControllerTest {
 
     private Student student;
 
+    @BeforeEach
+    public void setup() {
+        MockitoAnnotations.openMocks(this);
+        student = new Student();
+        student.setId(1L);
+        student.setFirstName("John");
+        student.setLastName("Doe");
+        student.setEmail("john.doe@example.com");
+        student.setStudentCard("12345");
+        student.setPassword("encodedPassword"); // Assume encoded password
+    }
+
+
 
 }
 
