@@ -25,3 +25,7 @@ import com.example.carenest.repository.StudentRepository;
 import com.example.carenest.service.StudentService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+@WebMvcTest(StudentController.class)
+@Import(TestSecurityConfig.class)
+
+
