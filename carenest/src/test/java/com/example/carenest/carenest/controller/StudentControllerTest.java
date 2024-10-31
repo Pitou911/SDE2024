@@ -27,5 +27,27 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @WebMvcTest(StudentController.class)
 @Import(TestSecurityConfig.class)
+public class StudentControllerTest {
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private StudentRepository studentRepository;
+
+    @MockBean
+    private StudentService studentService;
+
+    @MockBean
+    private BCryptPasswordEncoder passwordEncoder;
+
+    @InjectMocks
+    private StudentController studentController;
+
+    private final ObjectMapper objectMapper = new ObjectMapper();
+
+    private Student student;
+
+
+}
 
 
