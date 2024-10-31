@@ -59,6 +59,17 @@ public class StudentControllerTest {
         student.setPassword("encodedPassword"); // Assume encoded password
     }
 
+    @Test
+    @WithMockUser
+    public void testGetStudentById() throws Exception {
+        when(studentRepository.findById(1L)).thenReturn(Optional.of(student));
+
+        mockMvc.perform(get("/api/auth/1")) // Adjust endpoint as necessary
+               .andExpect(status().isOk())
+               .andExpect(jsonPath("$.firstName").value("John"));
+    }
+
+
 
 
 }
