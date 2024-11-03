@@ -69,6 +69,15 @@ public class StudentControllerTest {
                .andExpect(jsonPath("$.firstName").value("John"));
     }
 
+    @Test
+    @WithMockUser
+    public void testGetStudentById_NotFound() throws Exception {
+        when(studentRepository.findById(2L)).thenReturn(Optional.empty());
+
+        mockMvc.perform(get("/api/auth/2"))
+               .andExpect(status().isNotFound());
+    }
+
 
 
 
