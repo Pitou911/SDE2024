@@ -102,7 +102,8 @@ public class StudentControllerTest {
 
     @Test
     public void testCreateStudent_EmptyPassword() throws Exception{
-        String studentJsonEmptyPassword;
+        String studentJsonEmptyPassword = "{\"firstName\":\"John\",\"lastName\":\"Doe\",\"email\":\"john.doe@example.com\",\"studentCard\":\"12345\",\"password\":\"\"}";
+        
     }
 
 
