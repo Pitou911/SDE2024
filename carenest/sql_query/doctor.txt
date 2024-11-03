@@ -7,4 +7,5 @@ INSERT INTO carenest.doctor (name, email, phone_number, location) VALUES
 ('Anna Varga', 'anna.varga@example.com', '+36678901234', 'Győr'),
 ('Gábor Farkas', 'gabor.farkas@example.com', '+36789012345', 'Nyíregyháza'),
 ('Katalin Molnár', 'katalin.molnar@example.com', '+36890123456', 'Kecskemét'),
-('Miklós Szabó', 'miklos.szabo@example.com', '+36901234567', 'Szombathely');
+('Miklós Szabó', 'miklos.szabo@example.com', '+36901234567', 'Szombathely'),
+('Emese Papp', 'emese.papp@example.com', '+36123456780', 'Veszprém');
