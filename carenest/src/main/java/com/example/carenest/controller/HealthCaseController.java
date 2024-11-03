@@ -3,6 +3,7 @@ package com.example.carenest.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,7 +29,7 @@ public class HealthCaseController {
         // Create a HealthCase and ensure it returns the correct type
         HealthCase healthCase = healthCaseService.createHealthCase(request);
         if(healthCase == null){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST)
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return ResponseEntity.ok(healthCase);
     }
