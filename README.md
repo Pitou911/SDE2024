@@ -22,12 +22,15 @@ CareNest is a React-based web application that uses AI to predict possible disea
 
 - Node.js (v13 or higher)
 - npm or yarn
+- pip (v22.3.1)
+- Apache Maven (v3.9.9)
+- Java jdk-23
 
-### Installation
+### Frontend Installation
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Pitou911/carenest.git
+   git clone https://github.com/Pitou911/SDE2024.git
    ```
 2. Navigate to the project directory:
    ```bash
@@ -39,7 +42,16 @@ CareNest is a React-based web application that uses AI to predict possible disea
    # or
    yarn install
    ```
-
+### AI_model Installation
+1. After Cloning the repository:
+2. Navigate to the ai_model directory:
+   ```bash
+   cd YOUR_DIRECTORY/ai_model
+   ```
+3. Install required dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 ### Running the Application
 
 To start the application in development mode:
