@@ -45,7 +45,7 @@ CareNest is a React-based web application that uses AI to predict possible disea
 To start the application in development mode:
 
 ```bash
-   cd YOUR_DIRECTORY/frontend
+cd YOUR_DIRECTORY/frontend
 ```
 ```bash
 npm start
@@ -56,7 +56,7 @@ yarn start
 To start the AI model server in development mode:
 
 ```bash
-   cd YOUR_DIRECTORY/ai_model
+cd YOUR_DIRECTORY/ai_model
 ```
 ```bash
 pip install -r requirements.txt
@@ -64,7 +64,7 @@ python app.py
 ```
 
 ```bash
-   cd YOUR_DIRECTORY/carenest
+cd YOUR_DIRECTORY/carenest
 ```
 To start the backend server in development mode:
 ```bash
