@@ -117,7 +117,14 @@ public class StudentControllerTest {
     @Test
     @WithMockUser
     public void testUpdateStudent() throws Exception{
-        
+        Student updatedStudent = new Student();
+        updatedStudent.setId(1L);
+        updatedStudent.setFirstName("Jane");
+        updatedStudent.setLastName("Doe");
+        updatedStudent.setEmail("jane.doe@example.com");
+        updatedStudent.setStudentCard("12345");
+        updatedStudent.setPassword("encodedPassword");
+
     }
     
 }
