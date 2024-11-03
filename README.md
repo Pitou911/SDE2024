@@ -59,7 +59,8 @@ To start the AI model server in development mode:
    cd YOUR_DIRECTORY/ai_model
 ```
 ```bash
-pyton app.py
+pip install -r requirements.txt
+python app.py
 ```
 
 ```bash
