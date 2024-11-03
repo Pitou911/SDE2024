@@ -71,11 +71,13 @@ public class StudentController {
         
         if (studentUpdates.getFirstName() != null) {
             existingStudent.setFirstName(studentUpdates.getFirstName());
+            response.put("new_firstName", studentUpdates.getFirstName());
             response.put("firstName", "First name updated successfully!");
         }
 
         if (studentUpdates.getLastName() != null) {
             existingStudent.setLastName(studentUpdates.getLastName());
+            response.put("new_lastName", studentUpdates.getLastName());
             response.put("lastName", "Last name updated successfully!");
         }
 
