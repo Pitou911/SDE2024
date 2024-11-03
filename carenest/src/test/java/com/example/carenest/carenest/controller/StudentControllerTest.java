@@ -103,7 +103,12 @@ public class StudentControllerTest {
     @Test
     public void testCreateStudent_EmptyPassword() throws Exception{
         String studentJsonEmptyPassword = "{\"firstName\":\"John\",\"lastName\":\"Doe\",\"email\":\"john.doe@example.com\",\"studentCard\":\"12345\",\"password\":\"\"}";
-        
+        mockMvc.perform(post("/api/auth/register")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(studentJsonEmptyPassword))
+            .andExpect(status().isBadRequest())  // Expecting a 400 Bad Request response
+            .andExpect(jsonPath("$.error").value("Password cannot be null or empty"));
+
     }
 
 
