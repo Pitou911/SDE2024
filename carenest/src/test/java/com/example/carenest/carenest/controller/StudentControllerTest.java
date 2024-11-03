@@ -101,6 +101,9 @@ public class StudentControllerTest {
     }
 
     @Test
+    public void testCreateStudent_EmptyPassword() throws Exception{
+        
+    }
 
 
 
