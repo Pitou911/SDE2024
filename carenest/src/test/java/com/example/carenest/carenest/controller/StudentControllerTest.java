@@ -4,9 +4,8 @@ import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-
 import static org.mockito.ArgumentMatchers.any;
+import org.mockito.InjectMocks;
 import static org.mockito.Mockito.when;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +15,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -23,12 +23,14 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+
 import com.example.carenest.carenest.config.TestSecurityConfig;
 import com.example.carenest.controller.StudentController;
 import com.example.carenest.entity.Student;
 import com.example.carenest.repository.StudentRepository;
 import com.example.carenest.service.StudentService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 @WebMvcTest(StudentController.class)
 @Import(TestSecurityConfig.class)
@@ -116,7 +118,7 @@ public class StudentControllerTest {
 
     @Test
     @WithMockUser
-    public void testUpdateStudent() throws Exception{
+    public void testUpdateStudent() throws Exception {
         Student updatedStudent = new Student();
         updatedStudent.setId(1L);
         updatedStudent.setFirstName("Jane");
@@ -128,17 +130,13 @@ public class StudentControllerTest {
         when(studentRepository.findById(1L)).thenReturn(Optional.of(student));
         when(studentRepository.save(any(Student.class))).thenReturn(updatedStudent);
 
-        // mockMvc.perform(put("/api/auth/1"))//Adjust endpoint as necessary
-        // .contentType("application/json")
-        // .content(objectMapper.writeValueAsString(updatedStudent))
-        // .andExpect(status().isOk())
-        // .andExpect(jsonPath("$.new_firstName").value("Jane"));
-
-
-
-
+        mockMvc.perform(put("/api/auth/1") // Adjust endpoint as necessary
+                        .contentType("application/json")
+                        .content(objectMapper.writeValueAsString(updatedStudent)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.new_firstName").value("Jane"));
     }
-    
+
 }
 
 
