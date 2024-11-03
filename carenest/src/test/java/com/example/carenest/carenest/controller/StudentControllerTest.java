@@ -78,6 +78,12 @@ public class StudentControllerTest {
                .andExpect(status().isNotFound());
     }
 
+    public void testCreateStudent() throws Exception {
+        String studentJson = "{\"firstName\":\"John\",\"lastName\":\"Doe\",\"email\":\"john.doe@example.com\",\"studentCard\":\"12345\",\"password\":\"encodedPassword\"}";
+
+
+    }
+
 
 
 
