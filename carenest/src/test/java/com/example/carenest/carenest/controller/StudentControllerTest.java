@@ -79,7 +79,8 @@ public class StudentControllerTest {
         mockMvc.perform(get("/api/auth/2"))
                .andExpect(status().isNotFound());
     }
-
+    
+    @Test
     public void testCreateStudent() throws Exception {
         String studentJson = "{\"firstName\":\"John\",\"lastName\":\"Doe\",\"email\":\"john.doe@example.com\",\"studentCard\":\"12345\",\"password\":\"encodedPassword\"}";
         mockMvc.perform(post("/api/auth/register")
