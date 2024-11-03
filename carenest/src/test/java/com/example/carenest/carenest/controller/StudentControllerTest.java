@@ -128,6 +128,14 @@ public class StudentControllerTest {
         when(studentRepository.findById(1L)).thenReturn(Optional.of(student));
         when(studentRepository.save(any(Student.class))).thenReturn(updatedStudent);
 
+        // mockMvc.perform(put("/api/auth/1"))//Adjust endpoint as necessary
+        // .contentType("application/json")
+        // .content(objectMapper.writeValueAsString(updatedStudent))
+        // .andExpect(status().isOk())
+        // .andExpect(jsonPath("$.new_firstName").value("Jane"));
+
+
+
 
     }
     
