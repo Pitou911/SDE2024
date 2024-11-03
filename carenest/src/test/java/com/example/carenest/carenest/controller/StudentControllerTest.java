@@ -92,7 +92,8 @@ public class StudentControllerTest {
 
     @Test
     public void testCreateStudent_BadRequest() throws Exception{
-        
+        String studentJsonMissingPassword = "{\"firstName\":\"John\",\"lastName\":\"Doe\",\"email\":\"john.doe@example.com\",\"studentCard\":\"12345\"}";
+
     }
 
 
