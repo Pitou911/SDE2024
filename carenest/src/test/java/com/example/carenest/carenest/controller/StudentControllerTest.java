@@ -125,6 +125,10 @@ public class StudentControllerTest {
         updatedStudent.setStudentCard("12345");
         updatedStudent.setPassword("encodedPassword");
 
+        when(studentRepository.findById(1L)).thenReturn(Optional.of(student));
+        when(studentRepository.save(any(Student.class))).thenReturn(updatedStudent);
+
+
     }
     
 }
