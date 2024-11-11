@@ -6,7 +6,7 @@
 .save-change-btn,
 .change-pass-btn
 {
-    margin: 10px 0;
+    margin: 10px 5px;
     padding: 5px 15px;
     border: none;
     border-radius: 5px;
@@ -27,3 +27,81 @@
 .disease--description{
     font-size: 18px;
 }
+
+/* Add or modify the following styles in your CSS file */
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 9999; /* Ensure modal is on top */
+}
+  
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative; /* To position the close button inside the modal */
+    max-width: 1000px;
+    width: 100%;
+}
+  
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px; 
+    background: none;
+    border: none;
+    font-weight: bold;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+}
+  
+.close-btn:hover {
+    color: red; /* Change color when hovering */
+}
+  
+
+/* Styling the send email button */
+.send-email-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #162634;
+    color: white;
+    text-align: center;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .send-email-btn:hover {
+    background-color: #162634;
+  }
+  
+  /* Table styles */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  .table th, .table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .table th {
+    background-color: #f4f4f4;
+  }
+  
+  
+  
+  
