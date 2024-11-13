@@ -81,3 +81,15 @@ To start the backend server in development mode:
 ```bash
 mvn spring-boot:run
 ```
+### Running All the Applications in one-liner
+
+To start the application in development mode:
+
+```bash
+cd YOUR_DIRECTORY/frontend
+```
+```bash
+npm run start-all
+# or
+yarn run start-all
+```
