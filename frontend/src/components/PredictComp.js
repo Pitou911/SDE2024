@@ -36,7 +36,7 @@ const PredictComp = ({ addNewCase }) => {
 
     // Fetch doctors list for modal
     axios
-      .get("http://localhost:8080/api/doctors") // Adjust URL as needed for your backend
+      .get("http://localhost:8080/doctors")
       .then((response) => {
         setDoctors(response.data);
       })
