@@ -34,7 +34,6 @@ const PredictComp = ({ addNewCase }) => {
         console.error("Error loading symptom list: ", error);
       });
 
-    // Fetch doctors list for modal
     axios
       .get("http://localhost:8080/doctors")
       .then((response) => {
@@ -47,7 +46,7 @@ const PredictComp = ({ addNewCase }) => {
 
   const options = symptomsList.map((symptom) => ({
     value: symptom,
-    label: symptom.replace(/_/g, " "), // Format for display
+    label: symptom.replace(/_/g, " "),
   }));
 
   const handleChange = (selectedOptions) => {
@@ -60,7 +59,6 @@ const PredictComp = ({ addNewCase }) => {
     setPrediction(null);
     setPrecautions([]);
     setDescription("");
-    // Check if any symptom is selected
     if (selectedSymptoms.length === 0) {
       setError("Please select at least one symptom.");
       return;
@@ -188,7 +186,7 @@ const PredictComp = ({ addNewCase }) => {
                       <a
                         href={`mailto:${doctor.email}?subject=${encodeURIComponent(
                           prediction
-                        )}&body=${encodeURIComponent(precautions.join("\n"))}`}
+                        )}&body=${"The selected symptom(s) is/are: "}${encodeURIComponent(selectedSymptoms.join(", "))}`}
                         className="send-email-btn"
                         target="_blank"
                         rel="noopener noreferrer"
