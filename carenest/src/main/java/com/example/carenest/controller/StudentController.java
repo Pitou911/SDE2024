@@ -78,7 +78,7 @@ public class StudentController {
         if (studentUpdates.getLastName() != null) {
             existingStudent.setLastName(studentUpdates.getLastName());
             response.put("new_lastName", studentUpdates.getLastName());
-            response.put("lastName", "Last name updated successfully!");
+            response.put("lastName", "Last name updated successfully!");        
         }
 
         // Handle password update with current password verification

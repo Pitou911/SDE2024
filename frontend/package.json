@@ -9,6 +9,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.7",
+    "frontend": "file:",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.27.0",
@@ -20,7 +21,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start-backend": "cd ../carenest && mvn spring-boot:run",
+    "start-ai": "cd ../ai_model && python app.py",
+    "start-all": "npm-run-all --parallel start-backend start-ai start"
   },
   "eslintConfig": {
     "extends": [
