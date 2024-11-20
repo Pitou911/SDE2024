@@ -116,7 +116,6 @@ public class StudentController {
             Student student = studentOpt.get();
             String inputPassword = payload.get("password");
 
-            // Check if the password matches
             if (passwordEncoder.matches(inputPassword, student.getPassword())) {
                 return ResponseEntity.ok().build();
             } else {
@@ -132,10 +131,8 @@ public class StudentController {
         Optional<Student> student = studentService.findByEmailOrStudentCard(loginRequest.getIdentifier());
 
         if (student.isPresent()) {
-            // Initialize the password encoder
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-            
-            // Check if the provided password matches the hashed password in the database
+
             if (passwordEncoder.matches(loginRequest.getPassword(), student.get().getPassword())) {
                 Map<String, String> response = new HashMap<>();
                 response.put("message", "Login successful");
